@@ -1,4 +1,4 @@
-package example;
+package S191220137;
 
 public class Geezer {
 
@@ -38,6 +38,7 @@ public class Geezer {
 
         sorter.load(ranks);
         sorter.sort();
+        //System.out.println(sorter.getPlan());
 
         String[] sortSteps = this.parsePlan(sorter.getPlan());
 

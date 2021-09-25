@@ -1,0 +1,32 @@
+@beginuml
+
+actor theGeezer #Black
+actor sorter #Purple
+actor line #White
+actor Gourd #Yellow
+actor log #Red
+actor writer #Blue
+entity result.txt #Orange
+
+line -[#Green]> line :new Line(7)
+Gourd -[#Grey]> line 
+line -[#Green]> line :put(ONE,TWO,...,SEVEN)
+
+theGeezer -[#Green]> theGeezer :getTheGeezer()
+sorter -[#Green]> sorter :new BubbleSorter()
+
+sorter -[#Grey]> theGeezer
+theGeezer -[#Green]> theGeezer :setSorter(sorter)
+
+line -[#Grey]> theGeezer
+theGeezer -[#Green]> theGeezer :lineUp(line)
+theGeezer -[#Grey]> log :return and initialize log
+
+writer -[#Green]> writer :new BufferedWriter(new FileWriter("result.txt"))
+log -[#Grey]> writer
+writer -[#Grey]> result.txt :write(log)
+writer -[#Grey]> writer :flush()
+writer -[#Grey]> writer :close()
+
+@enduml
+
