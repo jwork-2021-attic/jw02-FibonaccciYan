@@ -1,0 +1,121 @@
+@startuml
+
+class Line{
+
+    Position[] positions
+
+    Line(int)
+    void put(Linable,int)
+    Linable get(int)
+    <<Override>> String toString()
+    Linable[] toa()
+
+}
+
+class Position{
+
+    Linable linable
+
+    Position(Linable)
+    setLinable(Linable)
+}
+
+class Geezer{
+
+    {static} Geezer theGeezer
+    Sorter sorter
+
+    {static} Geezer getTheGeezer()
+    Geezer()
+    void setSorter(Sorter)
+    String lineUp(Line)
+    String[] parsePlan(String)
+    void execute(String)
+
+}
+
+interface Sorter{
+
+    void load(int[] elements)
+    void sort()
+    String getPlan()
+
+}
+
+class BubbleSorter{
+
+    int[] a 
+    String plan
+
+    <<Override>> void load(int[] a)
+    void swap(int,int)
+    <<Override>> void sort()
+    <<Override>> String getPlan()
+
+}
+
+class QuickSort{
+
+    int[] a
+    String plan
+
+    <<Override>> void load(int[] a)
+    <<Override>> void sort()
+    void quickSort(int[] a,int begin,int end)
+    int partition(int[] a,int begin,int end)
+    void swap(int,int)
+    <<Override>> String getPlan()
+}
+
+class HeapSort{
+
+    int[] a 
+    String plan
+
+    <<Override>> void load(int[] a)
+    <<Override>> void sort()
+    void adjustDownToUp(int[] a,int k,int length)
+    void swap(int,int)
+    <<Override>> String getPlan()
+}
+
+interface Linable{
+
+    void setPosition(Position)
+    Position getPosition()
+    int getValue()
+
+}
+
+enum Gourd{
+
+    ONE,TWO,THREE,FOUR,FIVE,SIX,SEVEN
+    final int r,g,b
+    Position position
+
+    Gourd(int,int,int)
+    {static} Gourd getGourdByRank(int)
+    int rank()
+    <<Override>> String toString()
+    <<Override>> void setPosition(Position)
+    <<Override>> Position getPosition()
+    void swapPosition(Gourd)
+    <<Override>> int getValue()
+}
+
+BubbleSorter --|> Sorter
+BubbleSorter --o Geezer
+QuickSorter --|> Sorter
+QuickSorter --o Geezer
+HeapSorter --|> Sorter
+HeapSorter --o Geezer
+Gourd --|> Linable
+Gourd --o Line
+Line --o Geezer
+Position --o Line
+Position --o Linable
+Position --o Gourd
+
+@enduml
+
+

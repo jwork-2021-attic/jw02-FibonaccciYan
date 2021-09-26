@@ -38,7 +38,6 @@ public class Geezer {
 
         sorter.load(ranks);
         sorter.sort();
-        // System.out.println(sorter.getPlan());
 
         String[] sortSteps = this.parsePlan(sorter.getPlan());
 

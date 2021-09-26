@@ -4,15 +4,36 @@
 
 1. 用plantuml画出example的类图与Scene中main方法执行过程中的对象时序图:
 
-+ 类图如下：
+    + 类图如下：
 ![类图](http://www.plantuml.com/plantuml/png/ZLJTRjiy3BtNK-ZI1TGtA89-1Tn-1OQcID9imB0B9MOpOOfaI7AtpkkxJp-COdR6i5vKr25vU4JIkVP1kZ0SDMDxBRtd7vI1aJ4U_nwjLq5Py_aBxz7qsPE36cN2HRwzMDNnVWXDXELEWwWU1FW1mZdywchv0iwf3XOBlWvEcGCFjXWDoOk5W_tFEVaQSVQ64gkkaP4YkfnK-qbJuVKGy7x6A-qTm4zmI3hw88FQlo7AmrSeLlQkhGiHzFcOJuXFtfnoy5NaafiMzHIgfXp5XJs9xu6dFWc5APwc8Ps7HorDKw098_o0_H007QLhoaJgPxa7r3soSxosiakZYQoWuGWc-Ac-6DyGKV5PgJ2PnysmYvqat8LHycbg7_FOdnlmNeQSrlyk-mIB-UMX6gbpHZ1f1Sv_P6GQTMrEnWNPfio6DjQCZ0dTIZq05W4p7FcT7Lo7xCk7Lcm-BiNc_rNRYjlbqqhStczRiRx_9DRjjdt8KSzHaSvyJXp4ZXRkqIY4cHmRWyqXEvZzILOsRbvNqdnhQbWkaP1__HvfoDzxHMFd6qS7NF4iTeQ4jZXrUBfn_FBorm8t-xt3uZV7CdM9nC5No2O4MFetpQZAQmH5a8M0cPAnQp1T_aLblm40 "类图")
 
-+ 时序图如下：
+    + 时序图如下：
 ![时序图](http://www.plantuml.com/plantuml/png/dPB1QW8n48RlUOhWNXAmUotieOXWlHGjrLPAwM5rHmrDip8xmUhJrsHdoPRI5dgI-VBFDoQpeuPA9FzkXIWtLAEaFKm1pe0o6zjoyyQugP42k_TuiC3G6WSoM-qDTMHQUwnazWpMriSkLUzazW0LbqSqrDez271aw2GH6cyffm-IsHnBjmCXelpg9PiYW7kzQOSL3exopZXGrrh4OHmvTOaV-WwUr7ms6IvNys6UvyF5v6aoqqAaw_PQ4YnsGCkkKbhmC_IoJE8V6_lrsi8Ya13-cZxrnN_ERO3OqqeqFyX_NA7nyQ32ZqxXf8eRAX38evEbgwHnXanfpHd2aH2yifwT2TzwkmM4QXMP2kZMME1oa7Oxq5fSV6amQtf-vgb75l5GNVhqzno3OcjzirU_13QsRY2iP0IkYb_x9m00 "时序图")
 
 2. 尝试从面向对象编程角度理解`example`的设计理念，具体阐述这样写的好处与可改进之处（越详细越好）:
 
-+ 好处：通过将排序所需的内容、位置、排序调度者、排序方法等抽象为对象，使整个排序过程中每一步在做什么、需要调用哪些元素清晰可见，便于直观理解排序的实现方法；同时接口的采用使得在调用相关内容时，只需了解有哪些函数方法可供使用，而不需操心内部的实现逻辑，简化了思维上的要求，便于实现以及替换成不同的方法；
-+ 可改进之处：可以考虑在定义时，将类中的属性实现在一起，将类中的方法实现在一起，两者之间隔开，便于阅读代码；同时属性尽量按在方法中调用的先后顺序来排序，这样不至于在看到类中方法时不知道这里面调用的属性是什么
+    + 好处：通过将排序所需的内容、位置、排序调度者、排序方法等抽象为对象，使整个排序过程中每一步在做什么、需要调用哪些元素清晰可见，便于直观理解排序的实现方法；同时接口的采用使得在调用相关内容时，只需了解有哪些函数方法可供使用，而不需操心内部的实现逻辑，简化了思维上的要求，便于实现以及替换成不同的方法；
+    + 可改进之处：可以考虑在定义时，将类中的属性实现在一起，将类中的方法实现在一起，两者之间隔开，便于阅读代码；同时属性尽量按在方法中调用的先后顺序来排序，这样不至于在看到类中方法时不知道这里面调用的属性是什么
 
 ## 任务二
+
+（在任务二和任务三当中，均采用通过向`main`中传入参数来选择调用`Line/Matrix`以及`QuickSort/HeapSort`）
+
+类图如下所示：
+![类图](http://www.plantuml.com/plantuml/png/jLNBRjim4BppAtXK0EKF0YC8gZo08axzS0iKFT3Mnc4jawf89MtT_7l9vIFQEX2A5l518cU7mzbTYZutLdIstpUCRHfX37yl5HmOu-vtfusqKglFNtWRXmOZI2gaiYSuUzIovcrl2mUBTGDbZaI0Ry6-qC_Efe_GTRA6oOJFRIVLbbiT1WLPvpQsMZYCFITxoTE1aGsQyAQ-av-WQS36USPVPAy0Va8NHG_62Yitpn7bzW722ADptLa76dozli2bkqXhOaPaWWLpVe9K4LuOIlLm-S2ozKPXYFjEYCx0NIDK4Q218do7JMyX1R1gKZdfUx41z9rJH7wZHUtRubIXWJqeQuR-7ByWfbnQVcFIZuj-xIf9j8EYuCEbhLl7Zhf_P4CCztyIhOVBrmyEzKY3OuO_z7ApytwfstysE-uAvz_IbccXJuclOIiLZa3L9ycBxw_5qpj27YlIU1ro6Qv1jCTLu6zP1b5_xOrzfv_KGYzRajuEdmsehNtul-poUKzNmu6HJoxV3MaGTDCCnH8bDyMZAz7q44yIg7xFhtJVrL5zUbkLYu_JSd4zgwhoShgSbPStgwgSttmgvzMgkaNMlNFKe5vNRiirtRYDWo28ufXwIfzUD1Ztjd1myMCcrAx8DDp28tzzuHBAUAq8TwnmkOKPHxF78hJ4sCRXjS9FJtzDU1Z_6T0ytipfioPyWXDwElwKdM5AHjl8IuSgGzeZmFnZk29bd1aKIIe4H4d6pa7L-7VCVWC0 "类图")
+
++ 在终端中输入
+```bash
+javac S191220137/Scene.java
+java S191220137/Scene Line 1
+```
+选择调用`Line`以及`QuickSort`，程序运行结果请见 https://www.bilibili.com/video/BV1P64y187Uo?share_source=copy_web
+
++ 类似的，在终端中输入
+```bash
+javac S191220137/Scene.java
+java S191220137/Scene Line 2
+```
+选择调用`Line`以及`HeapSort`，程序运行结果请见 https://www.bilibili.com/video/BV17q4y1o7YS?share_source=copy_web
+
+## 任务三
