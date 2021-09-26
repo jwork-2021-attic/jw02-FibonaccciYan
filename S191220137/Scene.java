@@ -10,16 +10,13 @@ public class Scene {
     public static void main(String[] args) throws IOException {
 
         Line line = null;
-        // Matrix matrix;
+        Matrix matrix = null;
         if (args[0].equals("Line")) {
             line = new Line(256);
-        } else if(args[0].equals("Matrix")){
+        } else if (args[0].equals("Matrix")) {
+            matrix = new Matrix(256);
+        }
 
-        }
-        if(line == null){
-            System.out.println(args[0]+" "+args[1]+" "+"line null\n");
-        }
-        
         Gourd[] gourds = new Gourd[256];
         Integer[] a = new Integer[256];
 
@@ -56,7 +53,7 @@ public class Scene {
             if (args[0].equals("Line")) {
                 line.put(gourds[k], a[k]);
             } else {
-
+                matrix.put(gourds[k], a[k]);
             }
         }
 
@@ -70,7 +67,12 @@ public class Scene {
         }
         theGeezer.setSorter(sorter);
 
-        String log = theGeezer.lineUp(line, gourds);
+        String log = "";
+        if (args[0].equals("Line")) {
+            log = theGeezer.lineUp(line, gourds);
+        } else {
+            log = theGeezer.matrixUp(matrix, gourds);
+        }
 
         BufferedWriter writer;
         writer = new BufferedWriter(new FileWriter("result.txt"));

@@ -21,7 +21,7 @@ public class Geezer {
         this.sorter = sorter;
     }
 
-    public String lineUp(Line line, Gourd[] grouds) {
+    public String lineUp(Line line, Gourd[] gourds) {
 
         String log = new String();
 
@@ -42,9 +42,40 @@ public class Geezer {
         String[] sortSteps = this.parsePlan(sorter.getPlan());
 
         for (String step : sortSteps) {
-            this.execute(step, grouds);
+            this.execute(step, gourds);
             System.out.println(line.toString());
             log += line.toString();
+            log += "\n[frame]\n";
+        }
+
+        return log;
+
+    }
+
+    public String matrixUp(Matrix matrix, Gourd[] gourds) {
+
+        String log = new String();
+
+        if (sorter == null) {
+            return null;
+        }
+
+        Linable[] linables = matrix.toa();
+        int[] ranks = new int[linables.length];
+
+        for (int i = 0; i < linables.length; i++) {
+            ranks[i] = linables[i].getValue();
+        }
+
+        sorter.load(ranks);
+        sorter.sort();
+
+        String[] sortSteps = this.parsePlan(sorter.getPlan());
+
+        for (String step : sortSteps) {
+            this.execute(step, gourds);
+            System.out.println(matrix.toString());
+            log += matrix.toString();
             log += "\n[frame]\n";
         }
 

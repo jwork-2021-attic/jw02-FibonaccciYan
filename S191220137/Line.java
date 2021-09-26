@@ -16,18 +16,18 @@ public class Line {
     }
 
     public Linable get(int i) {
-        if ((i < 0) || (i > positions.length)) {
+        if ((i < 0) || (i >= positions.length)) {
             return null;
         } else {
             return positions[i].linable;
         }
     }
 
-    class Position {
+    public static class Position {
 
-        private Linable linable;
+        Linable linable;
 
-        Position(Linable linable) {
+        public Position(Linable linable) {
             this.linable = linable;
         }
 

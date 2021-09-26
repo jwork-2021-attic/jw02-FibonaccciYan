@@ -12,6 +12,18 @@ class Line{
 
 }
 
+class Matrix{
+
+    Position[] positions
+
+    Matrix(int)
+    void put(Linable,int)
+    Linable get(int)
+    <<Override>> String toString()
+    Linable[] toa()
+
+}
+
 class Position{
 
     Linable linable
@@ -110,8 +122,11 @@ HeapSorter --|> Sorter
 HeapSorter --o Geezer
 Gourd --|> Linable
 Gourd --o Line
+Gourd --o Matrix
 Line --o Geezer
+Matrix --o Geezer
 Position --o Line
+Position --o Matrix
 Position --o Linable
 Position --o Gourd
 
